@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Lista de Pessoas</h1>
+
+  <div class="pessoas-grid">
+    @for (pessoa of pessoas(); track pessoa.id) {
+      <div class="pessoa-card">
+        <img [src]="pessoa.foto" [alt]="pessoa.nome" class="pessoa-foto">
+        <div class="pessoa-info">
+          <h3>{{ pessoa.nome }}</h3>
+          <p class="pessoa-idade">{{ pessoa.idade }} anos</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>
