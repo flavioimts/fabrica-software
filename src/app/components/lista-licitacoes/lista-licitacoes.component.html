@@ -1,0 +1,67 @@
+<div class="container">
+  <h1 class="titulo-pagina">Lista de Licitações</h1>
+
+  <div class="tabela-container">
+    <table class="tabela-licitacoes">
+      <thead>
+        <tr>
+          <th>Número</th>
+          <th>Objeto</th>
+          <th>Modalidade</th>
+          <th>Status</th>
+          <th>Data Abertura</th>
+          <th>Valor Estimado</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (licitacao of licitacoes(); track licitacao.id) {
+          <tr class="linha-resumo" [class.expandida]="isRowExpanded(licitacao.id)" (click)="toggleRow(licitacao.id)">
+            <td>{{ licitacao.numero }}</td>
+            <td class="objeto-cell">{{ licitacao.objeto }}</td>
+            <td>{{ licitacao.modalidade }}</td>
+            <td>
+              <span class="badge" [class.status-andamento]="licitacao.status === 'Em andamento'"
+                                  [class.status-publicado]="licitacao.status === 'Publicado'"
+                                  [class.status-analise]="licitacao.status === 'Em análise'"
+                                  [class.status-encerrado]="licitacao.status === 'Encerrado'">
+                {{ licitacao.status }}
+              </span>
+            </td>
+            <td>{{ licitacao.dataAbertura }}</td>
+            <td class="valor-cell">{{ formatCurrency(licitacao.valorEstimado) }}</td>
+          </tr>
+          @if (isRowExpanded(licitacao.id)) {
+            <tr class="linha-detalhes">
+              <td colspan="6">
+                <div class="detalhes-container">
+                  <div class="detalhes-grid">
+                    <div class="detalhe-item">
+                      <span class="detalhe-label">Órgão Responsável:</span>
+                      <span class="detalhe-valor">{{ licitacao.orgaoResponsavel }}</span>
+                    </div>
+                    <div class="detalhe-item">
+                      <span class="detalhe-label">Data Publicação:</span>
+                      <span class="detalhe-valor">{{ licitacao.dataPublicacao }}</span>
+                    </div>
+                    <div class="detalhe-item">
+                      <span class="detalhe-label">Prazo de Entrega:</span>
+                      <span class="detalhe-valor">{{ licitacao.prazoEntrega }}</span>
+                    </div>
+                    <div class="detalhe-item">
+                      <span class="detalhe-label">Contato Responsável:</span>
+                      <span class="detalhe-valor">{{ licitacao.contatoResponsavel }}</span>
+                    </div>
+                  </div>
+                  <div class="observacoes-section">
+                    <span class="detalhe-label">Observações:</span>
+                    <p class="observacoes-texto">{{ licitacao.observacoes }}</p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
