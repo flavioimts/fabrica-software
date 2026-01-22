@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Lista de Carros</h1>
+
+  <div class="carros-grid">
+    @for (carro of carros(); track carro.id) {
+      <div class="carro-card">
+        <img [src]="carro.foto" [alt]="carro.modelo" class="carro-foto">
+        <div class="carro-info">
+          <h3>{{ carro.modelo }}</h3>
+          <p class="carro-placa">Placa: {{ carro.placa }}</p>
+          <p class="carro-ano">Ano: {{ carro.ano }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>
