@@ -1,0 +1,20 @@
+<div class="container">
+  <h1 class="titulo-pagina">Lista de Setores</h1>
+
+  <div class="setores-grid">
+    @for (setor of setores(); track setor.id) {
+      <div class="setor-card">
+        <div class="setor-header">
+          <h3 class="setor-nome">{{ setor.nome }}</h3>
+          <span class="setor-badge">{{ setor.numeroFuncionarios }} funcionários</span>
+        </div>
+        <div class="setor-info">
+          <p class="setor-descricao">{{ setor.descricao }}</p>
+          <p class="setor-responsavel">
+            <strong>Responsável:</strong> {{ setor.responsavel }}
+          </p>
+        </div>
+      </div>
+    }
+  </div>
+</div>
