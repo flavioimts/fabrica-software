@@ -8,5 +8,9 @@ export const routes: Routes = [
   {
     path: 'lista-pessoas',
     loadComponent: () => import('./lista-pessoas/lista-pessoas').then(m => m.ListaPessoas)
+  },
+  {
+    path: 'lista-carros',
+    loadComponent: () => import('./components/lista-carros/lista-carros.component').then(m => m.ListaCarrosComponent)
   }
 ];
