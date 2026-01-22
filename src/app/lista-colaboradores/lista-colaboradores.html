@@ -1,0 +1,19 @@
+<div class="container">
+  <h1 class="titulo-pagina">Lista de Colaboradores</h1>
+
+  <div class="colaboradores-grid">
+    @for (colaborador of colaboradores(); track colaborador.id) {
+      <div class="colaborador-card">
+        <div class="colaborador-header">
+          <img [src]="colaborador.foto" [alt]="colaborador.nome" class="colaborador-foto">
+        </div>
+        <div class="colaborador-info">
+          <h3 class="colaborador-nome">{{ colaborador.nome }}</h3>
+          <p class="colaborador-cargo">{{ colaborador.cargo }}</p>
+          <p class="colaborador-departamento">{{ colaborador.departamento }}</p>
+          <p class="colaborador-email">{{ colaborador.email }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>
