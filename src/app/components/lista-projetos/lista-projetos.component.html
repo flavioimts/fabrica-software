@@ -1,0 +1,50 @@
+<div class="container">
+  <h1 class="titulo-pagina">Lista de Projetos</h1>
+
+  <div class="tabela-wrapper">
+    <table class="tabela-projetos">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome do Projeto</th>
+          <th>Cliente</th>
+          <th>Responsável</th>
+          <th>Data Início</th>
+          <th>Previsão Término</th>
+          <th>Status</th>
+          <th>Orçamento</th>
+          <th>Progresso</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (projeto of projetos(); track projeto.id) {
+          <tr>
+            <td>{{ projeto.id }}</td>
+            <td>
+              <div class="projeto-nome">{{ projeto.nome }}</div>
+              <div class="projeto-descricao">{{ projeto.descricao }}</div>
+            </td>
+            <td>{{ projeto.cliente }}</td>
+            <td>{{ projeto.responsavel }}</td>
+            <td>{{ projeto.dataInicio | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ projeto.dataPrevisaoTermino | date: 'dd/MM/yyyy' }}</td>
+            <td>
+              <span class="status-badge" [ngClass]="'status-' + projeto.status.toLowerCase().replace(' ', '-')">
+                {{ projeto.status }}
+              </span>
+            </td>
+            <td class="valor">{{ projeto.orcamento | currency: 'BRL' }}</td>
+            <td>
+              <div class="progresso-wrapper">
+                <div class="progresso-barra">
+                  <div class="progresso-preenchido" [style.width.%]="projeto.percentualConclusao"></div>
+                </div>
+                <span class="progresso-texto">{{ projeto.percentualConclusao }}%</span>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
