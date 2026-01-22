@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="titulo-pagina">Investidores</h1>
+
+  <div class="grid">
+    @for (investidor of investidores(); track investidor.id) {
+      <div class="card">
+        <div class="card-logo">
+          <img [src]="investidor.logo" [alt]="investidor.nome" />
+        </div>
+        <div class="card-content">
+          <h3 class="investidor-nome">{{ investidor.nome }}</h3>
+          <p class="investidor-setor">{{ investidor.setor }}</p>
+          <p class="investidor-descricao">{{ investidor.descricao }}</p>
+          <a [href]="investidor.website" target="_blank" class="investidor-website">
+            Visitar site
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+</div>
